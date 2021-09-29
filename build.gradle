@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        spring = "2.5.5"
+        boot = "org.springframework.boot"
+        lombok = "org.projectlombok:lombok"
+        springCloudVersion = "2020.0.4"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE")
+        classpath("$boot:spring-boot-gradle-plugin:$spring")
+    }
+}
+
+allprojects {
+    group = "io.example.springcloud"
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: boot
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "idea"
+
+    sourceCompatibility = '11'
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+    }
+
+    dependencies {
+        compileOnly lombok
+        testCompileOnly lombok
+        annotationProcessor lombok
+        testAnnotationProcessor lombok
+
+        testImplementation "$boot:spring-boot-starter-test"
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+//["comp", "test", "web"].each {
+//    def subProjectDir = new File(projectDir, it)
+//    subProjectDir.eachDir {dir->
+//        def projectName = ":${it}-${dir.name}"
+//        project(projectName){
+//            bootJar.enabled(false)
+//            jar.enabled(true)
+//        }
+//    }
+//}
+//["server"].each {
+//    def subProjectDir = new File(projectDir, it)
+//    subProjectDir.eachDir {dir->
+//        def projectName = ":${it}-${dir.name}"
+//        project(projectName){
+//
+//        }
+//    }
+//}
+
+help.enabled(false)
