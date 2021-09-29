@@ -1,6 +1,6 @@
 rootProject.name = 'spring-cloud' // Root Project명 명시
 
-//def subModuleDirectoryName = ["application", "core-module", "domain-module", "in-system-module"]
+def subModuleDirectoryName = ["service"]
 subModuleDirectoryName.each {
 
     def compDir = new File(rootDir, it)
@@ -42,3 +42,5 @@ subModuleDirectoryName.each {
         project(projectName).projectDir = subDir
     }
 }
+
+include("gateway")

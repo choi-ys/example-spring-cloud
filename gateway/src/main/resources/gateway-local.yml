@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 500
+        response-timeout: 1000
+      routes:
+        - id: hello-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/hello
+        - id: new-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/new
+            - After=2021-09-29T17:50:00.000+09:00[Asia/Seoul] # 시간에 따른 연결 처리 방식(지정된 시간 이후에만 접근 가능)
+        - id: header-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/header
+            - Header=X-HEADER-API-VERSION, 1.0.0 # 요청 헤더 타입에 따른 연결 처리 방식(지정한 타입인 경우만 접근 가능)
