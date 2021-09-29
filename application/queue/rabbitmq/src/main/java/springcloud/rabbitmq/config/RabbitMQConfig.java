@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springcloud.converter.jackson.JacksonConverter;
-import springcloud.rabbitmq.domain.SampleMessageTask;
+import springcloud.rabbitmq.domain.SampleTask;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -38,7 +38,7 @@ public class RabbitMQConfig {
     public DefaultClassMapper classMapper() {
         DefaultClassMapper classMapper = new DefaultClassMapper();
         Map<String, Class<?>> idClassMapping = new HashMap<>();
-        idClassMapping.put("sampleMessageTask", SampleMessageTask.class);
+        idClassMapping.put("sampleMessageTask", SampleTask.class);
         classMapper.setIdClassMapping(idClassMapping);
         return classMapper;
     }

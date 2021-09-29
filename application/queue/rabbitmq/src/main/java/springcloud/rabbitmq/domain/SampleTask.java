@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @ToString(exclude = "DEFAULT_MESSAGE")
-public class SampleMessageTask {
+public class SampleTask {
 
     private String id;
     private String message;
@@ -23,7 +23,7 @@ public class SampleMessageTask {
     @JsonIgnore
     private String DEFAULT_MESSAGE = "not exist message, do something";
 
-    public SampleMessageTask(String message) {
+    public SampleTask(String message) {
         this.id = UUID.randomUUID().toString();
         this.message = StringUtils.hasText(message) ? message : DEFAULT_MESSAGE;
     }

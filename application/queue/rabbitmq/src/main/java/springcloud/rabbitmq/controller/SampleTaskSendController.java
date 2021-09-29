@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springcloud.rabbitmq.config.RabbitMQConfig;
 import springcloud.rabbitmq.config.SampleRabbitQueue;
-import springcloud.rabbitmq.domain.SampleMessageTask;
-import springcloud.rabbitmq.publisher.SampleMessagePublisher;
+import springcloud.rabbitmq.domain.SampleTask;
+import springcloud.rabbitmq.publisher.SampleTaskPublisher;
 
 /**
  * @author : choi-ys
@@ -16,20 +16,20 @@ import springcloud.rabbitmq.publisher.SampleMessagePublisher;
  */
 @RestController
 @RequestMapping("send")
-public class SampleMessageSendController {
-    private final SampleMessagePublisher sampleMessagePublisher;
+public class SampleTaskSendController {
+    private final SampleTaskPublisher sampleTaskPublisher;
 
-    public SampleMessageSendController(SampleMessagePublisher sampleMessagePublisher) {
-        this.sampleMessagePublisher = sampleMessagePublisher;
+    public SampleTaskSendController(SampleTaskPublisher sampleTaskPublisher) {
+        this.sampleTaskPublisher = sampleTaskPublisher;
     }
 
     // http://localhost:5001/send/sample?message=hello
     @GetMapping("sample")
     public ResponseEntity sendData(@RequestParam(name = "message") String message) {
-        sampleMessagePublisher.publish(
+        sampleTaskPublisher.publish(
                 RabbitMQConfig.RABBIT_SAMPLE_EXCHANGE_NAME,
                 SampleRabbitQueue.SAMPLE_TASK.getQueueName(),
-                new SampleMessageTask(message)
+                new SampleTask(message)
         );
         return ResponseEntity.noContent().build();
     }

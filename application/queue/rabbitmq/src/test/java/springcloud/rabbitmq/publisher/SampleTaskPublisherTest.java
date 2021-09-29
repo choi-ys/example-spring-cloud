@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import springcloud.rabbitmq.config.SampleRabbitQueue;
-import springcloud.rabbitmq.domain.SampleMessageTask;
+import springcloud.rabbitmq.domain.SampleTask;
 
 import static springcloud.rabbitmq.config.RabbitMQConfig.RABBIT_SAMPLE_EXCHANGE_NAME;
 
@@ -13,18 +13,18 @@ import static springcloud.rabbitmq.config.RabbitMQConfig.RABBIT_SAMPLE_EXCHANGE_
  * @date : 2021-09-30 오전 5:22
  */
 @SpringBootTest
-class SampleMessagePublisherTest {
+class SampleTaskPublisherTest {
 
     @Autowired
-    private SampleMessagePublisher sampleMessagePublisher;
+    private SampleTaskPublisher sampleTaskPublisher;
 
     @Test
     void sampleMessagePublishTest() {
         String message = "hello rabbitMQ";
-        sampleMessagePublisher.publish(
+        sampleTaskPublisher.publish(
                 RABBIT_SAMPLE_EXCHANGE_NAME,
                 SampleRabbitQueue.SAMPLE_TASK.getQueueName(),
-                new SampleMessageTask(message)
+                new SampleTask(message)
         );
     }
 }
