@@ -23,8 +23,8 @@ public class SampleTaskSendController {
         this.sampleTaskPublisher = sampleTaskPublisher;
     }
 
-    // http://localhost:5001/send/sample?message=hello
-    @GetMapping("sample")
+    // http://localhost:5001/send/task?message=hello
+    @GetMapping("task")
     public ResponseEntity sendData(@RequestParam(name = "message") String message) {
         sampleTaskPublisher.publish(
                 RabbitMQConfig.RABBIT_SAMPLE_EXCHANGE_NAME,

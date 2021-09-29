@@ -4,5 +4,6 @@ include("application:hello-api")
 include("application:gateway")
 include("application:eureka")
 include("application:queue:rabbitmq")
+include("application:queue:kafka")
 
 include("independently:converter")
