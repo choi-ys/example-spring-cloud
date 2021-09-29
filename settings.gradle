@@ -3,5 +3,6 @@ rootProject.name = 'spring-cloud'
 include("application:hello-api")
 include("application:gateway")
 include("application:eureka")
+include("application:queue:rabbitmq")
 
 include("independently:converter")

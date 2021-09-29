@@ -1,0 +1,6 @@
+apply from: "../../../independently/converter/build.gradle"
+dependencies {
+    implementation(project(":independently:converter"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
+}

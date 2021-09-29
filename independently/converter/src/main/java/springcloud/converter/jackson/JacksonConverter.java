@@ -12,10 +12,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
  * @date : 2021-09-30 오전 2:38
  */
 public class JacksonConverter {
-    private static final ObjectMapper mapper;
+    private static final ObjectMapper objectMapper;
 
     static {
-        mapper = new ObjectMapper()
+        objectMapper = new ObjectMapper()
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
@@ -29,12 +29,12 @@ public class JacksonConverter {
     }
 
     public static ObjectMapper getInstance() {
-        return mapper;
+        return objectMapper;
     }
 
     public static String toJson(Object value) {
         try {
-            return mapper.writeValueAsString(value);
+            return objectMapper.writeValueAsString(value);
         } catch (Exception e) {
             throw new RuntimeException("convert error");
         }
@@ -42,7 +42,7 @@ public class JacksonConverter {
 
     public static <T> T toObject(String content, Class<T> valueType) {
         try {
-            return mapper.readValue(content, valueType);
+            return objectMapper.readValue(content, valueType);
         } catch (Exception e) {
             throw new RuntimeException("convert error");
         }
@@ -50,7 +50,7 @@ public class JacksonConverter {
 
     public static <T> T toObject(String content, TypeReference<T> type) {
         try {
-            return mapper.readValue(content, type);
+            return objectMapper.readValue(content, type);
         } catch (Exception e) {
             throw new RuntimeException("convert error");
         }
@@ -58,7 +58,7 @@ public class JacksonConverter {
 
     public static <T> T convert(Object obj, Class<T> type) {
         try {
-            return mapper.convertValue(obj, type);
+            return objectMapper.convertValue(obj, type);
         } catch (Exception e) {
             throw new RuntimeException("convert error");
         }
