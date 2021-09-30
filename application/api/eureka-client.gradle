@@ -1,0 +1,4 @@
+apply from: "../../../in-system-available/clients/feign.gradle"
+dependencies {
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+}

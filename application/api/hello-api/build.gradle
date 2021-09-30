@@ -1,3 +1,4 @@
+apply from: "../eureka-client.gradle"
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 }
