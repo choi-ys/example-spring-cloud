@@ -1,10 +1,10 @@
 rootProject.name = 'spring-cloud'
 
-include("application:hello-api")
-include("application:gateway")
+include("application:api:hello-api")
 include("application:eureka")
-include("application:queue:rabbitmq")
+include("application:gateway")
 include("application:queue:kafka")
+include("application:queue:rabbitmq")
 
 include("in-system-available:clients:feign")
 
