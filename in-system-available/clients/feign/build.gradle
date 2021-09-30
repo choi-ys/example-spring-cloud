@@ -1,0 +1,4 @@
+apply from: "../../../independently/converter/build.gradle"
+dependencies {
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+}

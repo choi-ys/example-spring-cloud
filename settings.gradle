@@ -6,4 +6,6 @@ include("application:eureka")
 include("application:queue:rabbitmq")
 include("application:queue:kafka")
 
+include("in-system-available:clients:feign")
+
 include("independently:converter")
