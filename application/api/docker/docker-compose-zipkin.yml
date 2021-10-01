@@ -1,0 +1,7 @@
+# https://github.com/openzipkin-attic/docker-zipkin/blob/master/docker-compose.yml
+version: '3'
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"

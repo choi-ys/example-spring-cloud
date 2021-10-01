@@ -1,5 +1,6 @@
 package springcloud.kakao.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -12,6 +13,7 @@ import java.util.List;
  * @author : choi-ys
  * @date : 2021-09-30 오후 7:40
  */
+@Slf4j
 @RestController
 public class KakaoInstanceController {
 
@@ -26,6 +28,7 @@ public class KakaoInstanceController {
 
     @GetMapping("/instance")
     public String client() {
+        log.info("[kakao-api]final destination");
         List<ServiceInstance> instances = discoveryClient.getInstances(APPLICATION_NAME);
         ServiceInstance selectedServiceInstance = instances.get(0);
         return APPLICATION_NAME
