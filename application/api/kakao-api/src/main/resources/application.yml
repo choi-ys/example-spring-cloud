@@ -3,3 +3,13 @@ spring:
     name: kakao-api
   profiles:
     active: local
+
+--- # spring boot actuator config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
