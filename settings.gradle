@@ -1,9 +1,10 @@
 rootProject.name = 'spring-cloud'
 
+include("application:api:gateway")
 include("application:api:hello-api")
 include("application:api:kakao-api")
+include("application:admin")
 include("application:eureka")
-include("application:gateway")
 include("application:queue:kafka")
 include("application:queue:rabbitmq")
 
