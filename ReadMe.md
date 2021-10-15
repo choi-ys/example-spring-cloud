@@ -2,7 +2,7 @@ Project structure
 ===
 ```
 ├─application
-│  ├─admin (micro service server monitoring by spring-boot-admin)
+│  ├─admin (monitoring for each micro service server by spring-boot-admin with actuator)
 │  ├─api
 │  │  ├─gateway (api gateway : discovery client(eureka, spring-boot-admin, sleuth & zipkin)
 │  │  ├─hello-api (internal-service-api : discovery client(eureka, spring-boot-admin, sleuth & zipkin)
