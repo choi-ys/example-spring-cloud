@@ -4,8 +4,7 @@ server:
 spring:
   application:
     name: yaboong
-#  cloud:
-#    config:
-#      uri: http://localhost:8080
+  profiles:
+    active: local
   config:
     import: "optional:configserver:http://localhost:8080"

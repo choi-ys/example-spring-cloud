@@ -1,4 +1,4 @@
-package springcloud.config.client;
+package springcloud.config.client.external;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date : 2021/10/17 2:17 오후
  */
 @SpringBootApplication
-public class ConfigClientApplication {
+public class ExternalConfigClientApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConfigClientApplication.class);
+        SpringApplication.run(ExternalConfigClientApplication.class);
     }
 }

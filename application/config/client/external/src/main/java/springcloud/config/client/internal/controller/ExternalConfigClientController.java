@@ -1,4 +1,4 @@
-package springcloud.config.client.controller;
+package springcloud.config.client.internal.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date : 2021/10/17 2:18 오후
  */
 @RestController
-public class ConfigClientController {
+public class ExternalConfigClientController {
 
     @Value("${who.am.i}")
     private String identity;
